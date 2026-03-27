@@ -58,7 +58,7 @@ const WEATHER_MAPPING = {
 async function fetchWeather() {
     const lat = 31.5204;
     const lon = 74.3587;
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum&timezone=auto`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum&timezone=auto&forecast_days=8`;
 
     try {
         const response = await fetch(url, { cache: 'no-store' });
@@ -106,14 +106,16 @@ function updateUI(data) {
     const forecastGrid = document.getElementById('forecast-grid');
     forecastGrid.innerHTML = '';
 
-    for (let i = 1; i < 8; i++) {
+    const forecastLength = Math.min(daily.time.length, 8);
+    for (let i = 1; i < forecastLength; i++) {
         const date = new Date(daily.time[i]);
         const dayName = i === 1 ? 'Tomorrow' : date.toLocaleDateString('en-US', { weekday: 'long' });
         const code = daily.weather_code[i];
         const info = WEATHER_MAPPING[code] || { icon: 'help-circle' };
 
         const forecastItem = document.createElement('div');
-        forecastItem.className = 'forecast-item';
+        forecastItem.className = 'forecast-item fade-in';
+        forecastItem.style.animationDelay = `${i * 0.1}s`;
         forecastItem.innerHTML = `
             <span class="forecast-day">${dayName}</span>
             <div class="forecast-weather">
@@ -133,4 +135,8 @@ function updateUI(data) {
 
     // Re-create icons
     lucide.createIcons();
+
+    // Add loaded class and hide loader
+    document.querySelector('.content').classList.add('loaded');
+    document.querySelector('.loading-container').classList.add('hide');
 }
