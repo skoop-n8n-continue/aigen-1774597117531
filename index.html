@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahore Weather - Digital Signage</title>
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="styles.css?v=w9x2y4">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background Overlay -->
+        <div class="background-image"></div>
+        <div class="overlay"></div>
+
+        <main class="content">
+            <!-- Left Side: Time and Main Weather -->
+            <section class="main-stats">
+                <div class="clock-section">
+                    <h1 id="clock">00:00</h1>
+                    <p id="date">Friday, March 27, 2026</p>
+                </div>
+
+                <div class="current-weather">
+                    <div class="location">
+                        <i data-lucide="map-pin" class="icon-small"></i>
+                        <span>Lahore, Pakistan</span>
+                    </div>
+                    <div class="temp-container">
+                        <div id="current-icon-container">
+                            <i data-lucide="sun" id="main-weather-icon" class="icon-large"></i>
+                        </div>
+                        <span id="current-temp">--°</span>
+                    </div>
+                    <p id="weather-description">Clear Sky</p>
+                    <div class="high-low">
+                        <span>H: <span id="temp-max">--°</span></span>
+                        <span class="separator">|</span>
+                        <span>L: <span id="temp-min">--°</span></span>
+                    </div>
+                </div>
+
+                <div class="extra-details">
+                    <div class="detail-card">
+                        <i data-lucide="droplets"></i>
+                        <div class="detail-info">
+                            <span class="label">Humidity</span>
+                            <span class="value" id="humidity">--%</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i data-lucide="wind"></i>
+                        <div class="detail-info">
+                            <span class="label">Wind Speed</span>
+                            <span class="value" id="wind-speed">-- km/h</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i data-lucide="sun"></i>
+                        <div class="detail-info">
+                            <span class="label">UV Index</span>
+                            <span class="value" id="uv-index">--</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i data-lucide="cloud-rain"></i>
+                        <div class="detail-info">
+                            <span class="label">Precipitation</span>
+                            <span class="value" id="precipitation">-- mm</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Side: 7-Day Forecast -->
+            <section class="forecast-section">
+                <h2 class="section-title">7-Day Forecast</h2>
+                <div class="forecast-grid" id="forecast-grid">
+                    <!-- Forecast items will be injected here -->
+                    <div class="forecast-item loading">Loading...</div>
+                </div>
+
+                <div class="sun-times">
+                    <div class="sun-card">
+                        <i data-lucide="sunrise" class="sun-icon"></i>
+                        <div>
+                            <span class="sun-label">Sunrise</span>
+                            <span id="sunrise-time">--:--</span>
+                        </div>
+                    </div>
+                    <div class="sun-card">
+                        <i data-lucide="sunset" class="sun-icon"></i>
+                        <div>
+                            <span class="sun-label">Sunset</span>
+                            <span id="sunset-time">--:--</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Data provided by Open-Meteo • Last updated: <span id="last-updated">Just now</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js?v=w9x2y4"></script>
+</body>
+</html>
