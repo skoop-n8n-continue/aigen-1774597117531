@@ -1,9 +1,9 @@
 :root {
     --primary-color: #00b7af;
-    --bg-dark: #10181f;
+    --bg-dark: #052221;
     --text-white: #ffffff;
     --text-gray: #aab1b1;
-    --glass-bg: rgba(16, 24, 31, 0.7);
+    --glass-bg: rgba(5, 34, 33, 0.7);
     --glass-border: rgba(255, 255, 255, 0.1);
     --font-inter: 'Inter', sans-serif;
     --font-poppins: 'Poppins', sans-serif;
@@ -54,7 +54,7 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(16, 24, 31, 0.8) 0%, rgba(16, 24, 31, 0.4) 50%, rgba(16, 24, 31, 0.8) 100%);
+    background: linear-gradient(135deg, rgba(5, 34, 33, 0.9) 0%, rgba(5, 34, 33, 0.5) 50%, rgba(5, 34, 33, 0.9) 100%);
     z-index: -1;
 }
 
